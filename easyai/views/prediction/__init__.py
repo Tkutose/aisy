@@ -1,0 +1,5 @@
+from .SelectMakeModelViewClass import SelectMakeModelView as SelectMakeModelView
+from .PredictionViewClass import PredictionView as PredictionView
+from .PredictionDataUploadViewClass import PredictionDataUploadView as PredictionDataUploadView
+from .PredictionSettingViewClass import PredictionSettingView as PredictionSettingView
+

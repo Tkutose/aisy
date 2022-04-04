@@ -1,0 +1,43 @@
+{% extends 'easyai/base/base.html' %}
+
+{% block title %} easy ai {% endblock %}
+
+{% block content %}
+
+<div class="bg-gray-200 min-h-80">
+{% block form %}
+{% endblock %}
+</div>
+
+<!-- <a class="bg-blue-900" href="{% url 'easyai:data_download' %}">df</a> -->
+
+<div class="w-11/12 h-80 mx-auto p-5">
+    <p class="text-gray-500 ml-2 mb-2">現在編集中のデータ</p>    
+    <div class="flex flex-col h-full border-solid border-slate-700">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow border-b border-gray-200 sm:rounded-lg ">
+                    <table class="min-w-full divide-y divide-gray-200 relative border-collapse whitespace-nowrap">
+                        <thead class="bg-gray-50 sticky top-0">
+                            <tr>
+                                {% for columns, item in df.iteritems %}
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium bg-gray-500 text-gray-100 sticky top-0 uppercase tracking-wider">
+                                    {{ columns }}
+                                </th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200"></tbody>
+                        {% for index, rows in df.iterrows %}
+                        <tr>
+                            {% for row in rows %}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ row }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                {% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'easyai/base/base.html' %}
+{% load static %}
+
+{% block title %} TOP {% endblock %}
+
+{% block content %}
+
+<div class="flex mt-16">
+
+    <div class="w-1/3 h-96 ml-auto mr-8 border-2 border-gray-400 border-opacity-60 rounded-lg hover:opacity-70 ">
+        <a href="{% url 'easyai:select_mode' %}">
+            <div class="h-1/2 my-4">
+            <img src="{% static 'easyai/img/nn.svg' %}" class="h-full mx-auto" />
+            </div>
+            <div class="border-t border-gray-400 p-6">
+            <p class="text-2xl font-medium text-gray-800">AIを作る</p>
+            <p class="m-3 text-gray-700">2つのモードから選んでAIを作ることができます。</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="w-1/3 h-96 mr-auto ml-8 border-2 border-gray-400 border-opacity-60 rounded-lg hover:opacity-70 ">
+        <a href="{% url 'easyai:select_make_model' %}">
+            <div class="h-1/2 my-4">
+                <img src="{% static 'easyai/img/graph.svg' %}" class="h-full mx-auto" />
+            </div>
+            <div class="border-t border-gray-400 p-6">
+            <p class="text-2xl font-medium text-gray-800">AIを使う</p>
+            <p class="m-3 text-gray-700">Aisyで作成したAIを使って予測を行うことができます。</p>
+            </div>
+        </a>
+    </div>
+
+
+{% endblock %}

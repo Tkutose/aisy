@@ -1,0 +1,27 @@
+{% extends 'easyai/base/full_make_feature_value.html' %}
+
+{% block form %}
+<div class="pl-64 pb-3 bg-gray-300 border-b border-gray-400">
+    <p class="text-3xl mb-4 text-gray-600">Step2</p>
+    <p class="text-gray-400">データを加工しましょう。</p>
+</div>
+
+<div class="bg-gray-200 mt-8 flex justify-center">
+    <div class="w-1/3 ml-8">
+        <p class="text-gray-700">AIが読み込める形にデータを整えます。</p><br>
+        <p class="text-gray-800">既にチェックマークが入っているものはそのままにし、<br>以下に該当する列に新たにチェックを入れてください。</p>
+        <p class="text-gray-800 pl-3">・IDや連番といった単に1から順の数字だけの列 (~~idなど)</p>
+        <p class="text-gray-800 pl-3">・まったく関係のない値</p>
+        <p class="text-gray-800 pt-5">チェックや該当するものがなければそのまま送信してください。</p>
+    </div>
+    <div class="w-1/3 flex flex-col ml-8">
+        <form class="items-baseline" method="POST">
+            {{ form }}
+            {% csrf_token %}
+            <input type="submit" value="send"
+                class="ml-32 text-base bg-gray-500 hover:bg-gray-600 text-white active:bg-gray-600 font-bold px-4 py-2 rounded shadow hover:shadow-md cursor-pointer outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" />
+        </form>
+    </div>
+</div>
+
+{% endblock %}

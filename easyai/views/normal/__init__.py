@@ -1,0 +1,7 @@
+from .NormalDeleteStringViewClass import NormalDeleteStringView as NormalDeleteStringView
+from .NormalMissingProcessViewClass import NormalMissingProcessView as NormalMissingProcessView
+from .NormalMLCompleteViewClass import NormalMLCompleteView as NormalMLCompleteView
+from .NormalPredictViewClass import NormalPredictView as NormalPredictView
+from .NormalReplaceStringViewClass import NormalReplaceStringView as NormalReplaceStringView
+from .NormalTargetSettingViewClass import NormalTargetSettingView as NormalTargetSettingView
+from .NormalUploadViewClass import NormalUploadView as NormalUploadView

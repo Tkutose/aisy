@@ -1,0 +1,33 @@
+{% extends 'easyai/base/base.html'%}
+{% load static %}
+
+{% block title %} easy ai {% endblock %}
+
+{% block content %}
+<div class="pl-64 pb-3 bg-gray-300 border-b border-gray-400">
+    <p class="text-3xl mb-4 text-gray-600">Use AI</p>
+    <p class="text-gray-400">データを選択してください</p>
+</div>
+
+<div class="text-xl text-gray-600 m-7">選択したAIに予測させるデータを選択して下さい。</div>
+
+<div class="flex mx-16 p-5 w-5/12 shadow-lg bg-gray-200 text-gray-600 border border-gray-300">
+    <div class="w-3/5 ml-16">
+        <form enctype="multipart/form-data" method="POST">
+            <p>ファイルをアップロードしてください。</p>
+            <label>
+                <img src="{% static 'easyai/img/upload.svg' %}" class="w-1/4 m-4 hover:opacity-50">
+
+                {% csrf_token %}
+                {{ form }}
+                <p class="text-gray-400 text-sm ml-32">対応ファイル:csv</p>
+            </label>
+    </div>
+    <div class="relative w-2/5">
+        <input type="submit" value="send"
+            class="text-base absolute bottom-0 left-0 bg-gray-500 hover:bg-gray-600 text-white active:bg-gray-600 font-bold px-4 py-2 rounded shadow hover:shadow-md cursor-pointer outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" />
+        </form>
+    </div>
+</div>
+
+{% endblock %}

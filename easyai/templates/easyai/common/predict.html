@@ -1,0 +1,97 @@
+{% extends 'easyai/base/base.html' %}
+{% load static %}
+
+{% block title %} easy ai {% endblock %}
+
+{% block content %}
+<div class="pl-64 pb-3 bg-gray-300 border-b border-gray-400">
+    <p class="text-3xl mb-4 text-gray-600">Complete!</p>
+    <p class="text-gray-400">AIが完成しました。</p>
+</div>
+
+<div class="flex bg-gray-200">
+    <div class="w-1/2">
+
+        <div class="flex mx-16 my-8 p-5 shadow-lg bg-gray-100 text-gray-600 border border-gray-300">
+            <div class="w-1/2">
+                <p class="text-gray-500 text-lg ml-6">完成したAIをダウンロードする</p>
+                <p class="text-gray-500 text-sm ml-6 mt-2">規定の拡張子でダウンロードされます。</p>
+
+            </div>
+            <div class="w-1/2">
+                <a href="{% url 'easyai:model_download' %}">
+                    <img src="{% static 'easyai/img/download.svg' %}" class="w-1/3 mx-auto mt-8 hover:opacity-50">
+                    <p class="mx-16 text-center text-gray-500">download</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="mx-16 my-8 p-5 shadow-lg bg-gray-50 text-gray-600 border border-gray-300">
+            <p class="text-gray-500 text-lg ml-6">結果を確認する</p>
+            <p class="text-gray-500 text-sm ml-6 mt-2">各値がどのくらい予測に影響するかを表しています。</p>
+            <img src="data:image/svg+xml;base64, {{ graph | safe }} " alt="">
+        </div>
+
+        <div class="flex mx-16 my-8 p-5 shadow-lg bg-gray-100 text-gray-600 border border-gray-300">
+            <div class="w-1/2">
+                <p class="text-gray-500 text-lg ml-6">使用したデータをダウンロードする</p>
+                <p class="text-gray-500 text-sm ml-6 mt-2">csv形式でダウンロードされます。</p>
+
+            </div>
+            <div class="w-1/2">
+                <a href="{% url 'easyai:data_download' %}">
+                    <img src="{% static 'easyai/img/data.svg' %}" class="w-1/3 mx-auto mt-8 hover:opacity-50">
+                    <p class="mx-16 text-center text-gray-500">download</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-1/2">
+        {% if has_result == True %}
+        <div class="mr-16 my-8 p-5 shadow-lg bg-gray-100 text-gray-600 border border-gray-300">
+            <p class="text-gray-500 text-lg ml-6">予測結果</p>
+            <p class="text-gray-500 text-base ml-6 mt-2">{{ result }}</p>
+            <p class="text-gray-500 text-base ml-6 mt-2">{{ accuracy }}</p>
+            <p class="text-gray-500 text-sm ml-6 mt-2">{{ message }}</p>
+            <p class="text-gray-500 text-base ml-6 mt-6">使用データ</p>
+            <div class=" ml-6 flex">
+                <details>
+                    <summary class="text-gray-500 text-sm">詳細を表示</summary>
+                    <div class="flex">
+                        <div class="ml-3">
+                            {% for key in predict_value.keys %}
+                            <p>{{ key }}:</p>
+                            {% endfor %}
+                        </div>
+                        <div class="ml-3">
+                            {% for value in predict_value.values %}
+                            <p>{{ value }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+        {% else %}
+        {% endif %}
+
+        <div class="flex mr-16 my-8 p-5 shadow-lg bg-gray-200 text-gray-600 border border-gray-300">
+            <div>
+                <p class="text-gray-500 text-lg ml-6 mt-5">完成したAIを試す</p>
+                <p class="text-gray-500 text-sm ml-6 mt-2">値を送信すると、予測結果を返します。</p>
+            </div>
+            <div class="m-auto">
+                <form method="POST">
+                    <div class="flex flex-col items-baseline">
+                        {{ form }}
+                        {% csrf_token %}
+                        <input type="submit" value="予測"
+                            class="ml-36 text-base bg-gray-500 hover:bg-gray-600 text-white active:bg-gray-600 font-bold px-4 py-2 rounded shadow hover:shadow-md cursor-pointer outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" />
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

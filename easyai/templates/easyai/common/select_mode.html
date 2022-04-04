@@ -1,0 +1,49 @@
+{% extends 'easyai/base/base.html' %}
+
+{% block title %} Select {% endblock %}
+
+{% block content %}
+
+
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap justify-evenly -m-4">
+            <a href="{% url 'easyai:easy_upload' %}" class="p-4 lg:w-1/3 shadow-lg bg-gray-100 hover:bg-gray-50">
+                <div
+                    class="h-full bg-gray-200 hover:bg-gray-100 bg-opacity-75 px-8 pt-16 pb-12 rounded-lg overflow-hidden text-center relative">
+                    <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">TYPE</h2>
+                    <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">お手軽モード</h1>
+                    <p class="leading-relaxed mb-3">最小限の操作で簡単にAIを作ることができます。</p>
+                    <p class="leading-relaxed text-gray-500 ">対応モデル</p>
+                    <p class="leading-relaxed mb-2">GBDT</p>
+                </div>
+            </a>
+
+            <!-- <a href="{% url 'easyai:normal_upload' %}" class="p-4 lg:w-1/4 shadow-lg bg-gray-100 hover:bg-gray-50">
+                <div
+                    class="h-full bg-gray-200 hover:bg-gray-100 bg-opacity-75 px-8 pt-16 pb-16 rounded-lg overflow-hidden text-center relative">
+                    <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">TYPE</h2>
+                    <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">通常モード</h1>
+                    <p class="leading-relaxed mb-3">好きなモデルを選択したい方向け。</p>
+                    <p class="leading-relaxed text-gray-500 ">対応モデル</p>
+                    <p class="leading-relaxed mb-2">GBDT/NN/ランダムフォレスト</p>
+                </div>
+            </a> -->
+
+            <a href="{% url 'easyai:full_upload' %}" class="p-4 lg:w-1/3 shadow-lg bg-gray-100 hover:bg-gray-50">
+                <div
+                    class="h-full bg-gray-200 hover:bg-gray-100 bg-opacity-75 px-8 pt-16 pb-12 rounded-lg overflow-hidden text-center relative">
+                    <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">TYPE</h2>
+                    <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">本格モード</h1>
+                    <p class="leading-relaxed mb-3">少しでも精度を上げたい方向け。</p>
+                    <p class="leading-relaxed text-gray-500 ">対応モデル</p>
+                    <p class="leading-relaxed mb-2">GBDT・NN・ランダムフォレスト</p>
+                    <p class="leading-relaxed text-gray-500 ">追加手法</p>
+                    <p class="leading-relaxed mb-2">アンサンブル</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'easyai/base/full_base.html' %}
+
+{% block title %} complete {% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    {{ form }}
+    {% csrf_token %}
+    <input type="submit" />
+</form>
+
+{% endblock %}

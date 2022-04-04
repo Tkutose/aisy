@@ -1,0 +1,37 @@
+{% extends 'easyai/base/base.html' %}
+
+{% block title %} Select {% endblock %}
+
+{% block content %}
+<div class="pl-64 pb-3 bg-gray-300 border-b border-gray-400">
+    <p class="text-3xl mb-4 text-gray-600">Use AI</p>
+    <p class="text-gray-400">AIを使って予測しましょう。</p>
+</div>
+
+
+<div class="text-xl text-gray-600 m-7">作成したAIを選択してください。</div>
+
+<div class="w-4/5 mx-auto mt-8">
+    <div class="flex">
+        <p class="w-1/3 ml-3">作成モード</p>
+        <p class="w-1/3">データ名</p>
+        <p class="w-1/3 ml-3">作成日時</p>
+    </div>
+
+    {% for model in models %}
+
+    {% if model.mode == "お手軽モード" %}
+        <a href="{% url 'easyai:prediction_upload' model.id   %}" class="block  bg-slate-200 m-1 p-3 text-base hover:opacity-70 ">    
+    {% else %}
+        <a href="{% url 'easyai:prediction_upload' model.id   %}" class="block bg-gray-300 m-1 p-3 text-base hover:opacity-70 ">
+    {% endif %}
+            <div class="flex">
+                <p class="w-1/3">{{ model.mode }}</p>
+                <p class="w-1/3 ml-3">{{ model.file_name }}</p>
+                <p class="w-1/3 ml-3">{{ model.time }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+    {% endblock %}

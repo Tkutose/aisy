@@ -1,0 +1,32 @@
+{% load static %}
+
+<html lang="ja" class="h-full">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Aisy | {% block title %}{% endblock %}</title>
+    <link href="{% static 'easyai/css/style.css' %}" rel="stylesheet">
+</head>
+<body class="h-full">
+    <nav class="font-sans w-full bg-gray-300 text-center flex justify-between p-2 overflow-hidden">
+        <a href="/" class="block text-left">
+            <img src="{% static 'easyai/img/logo.svg' %}" class="h-10 sm:h-10 rounded-full" alt="logo">
+        </a>
+        <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
+            <li><a href="#" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 hover:bg-white no-underline">What is Aisy?</a></li>
+            <li><a href="#" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 hover:bg-white no-underline">Quick Start</a></li>
+            <li><a href="{% url 'easyai:select_mode' %}" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 hover:bg-white no-underline">Make AI</a></li>
+            <li class="pr-2"><a href="#"
+                    class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 hover:bg-white no-underline">Q&A</a></li>
+            <li class="pl-2 border-l"><a href="#"
+                    class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 hover:bg-white no-underline">log out</a></li>
+            <!-- <button class="bg-gray-800 hover:bg-text-gray-800 hover:bg-gray-700 text-white ml-4 py-2 px-3">
+                Sign Up
+            </button> -->
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+
+
